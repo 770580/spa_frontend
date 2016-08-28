@@ -1,5 +1,5 @@
 var path = require('path');
-var webpack = require("webpack");
+var webpack = require('webpack');
 
 module.exports = {
   entry: [
@@ -24,7 +24,7 @@ module.exports = {
 
     loaders: [
       {
-        loader: "babel-loader",
+        loader: 'babel-loader',
         test: /\.jsx?$/,
         include: path.resolve(__dirname, "src"),
         query: {
