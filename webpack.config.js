@@ -24,6 +24,11 @@ module.exports = {
 
     loaders: [
       {
+        loader: 'react-hot',
+        test: /\.jsx?$/,
+        include: path.resolve(__dirname, "src")
+      },
+      {
         loader: 'babel-loader',
         test: /\.jsx?$/,
         include: path.resolve(__dirname, "src"),
@@ -31,12 +36,7 @@ module.exports = {
           plugins: ['transform-runtime'],
           presets: ['es2015', 'react'],
         }
-      },
-      {
-        loader: 'react-hot',
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname, "src")
-      },
+      }
     ]
   },
   eslint: {
