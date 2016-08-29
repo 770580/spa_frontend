@@ -1,2 +1,8 @@
-document.getElementById('root').innerHTML = 'Hello =)';
-module.hot.accept();
+import React from 'react';
+import { render } from 'react-dom';
+import App from './App';
+ 
+render(
+  <App />,
+  document.getElementById('root')
+);

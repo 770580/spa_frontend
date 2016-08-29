@@ -1,13 +1,19 @@
 {
   "extends": "eslint:recommended",
   "parser": "babel-eslint",
-  ecmaFeatures: {
-    'jsx': true,
-    'modules': true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
   },
   "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
   },
   plugins: [
     'react'
