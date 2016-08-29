@@ -2,7 +2,19 @@ import React from 'react';
  
 class Post extends React.Component {
   render() {
-    return <p>Супер новость</p>;
+    var postItems = this.props.posts.map(function(postItem) {
+      return (
+        <div key={postItem.id}>
+          <p><b>{postItem.name}</b></p>
+          <p>{postItem.description}</p>
+        </div>
+      );
+    });
+    return (
+      <div>
+        {postItems}
+      </div>
+    );
   }
 }
  
