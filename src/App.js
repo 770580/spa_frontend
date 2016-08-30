@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import PostForm from './PostForm';
 
-var posts = [
+let posts = [
   { id: 1,
     name: 'Сегодня уже сегодня',
     description: 'Кто-то разлил масло.'
@@ -11,7 +11,7 @@ var posts = [
     name: 'Завтра будет завтра',
     description: 'Примус будет починен.'
   }
-]
+];
  
 class App extends React.Component {
   render() {
