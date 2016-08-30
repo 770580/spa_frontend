@@ -34,7 +34,7 @@ module.exports = {
         include: path.resolve(__dirname, "src"),
         query: {
           plugins: ['transform-runtime'],
-          presets: ['es2015', 'react', 'stage-0'],
+          presets: ['es2015', 'react', 'stage-0']
         }
       }
     ]
