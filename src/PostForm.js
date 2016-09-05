@@ -18,15 +18,13 @@ class PostForm extends React.Component {
     }
 
     this.props.onPostSubmit({ title: title, body: body, username: username })
-    this.refs.title.value = ''
-    this.refs.body.value = ''
-    this.refs.username.value = ''
+    this.refs.form.reset()
     return
   }
 
   render() {
     return (
-      <form className="postForm" onSubmit={this.handleSubmit}>
+      <form className="postForm" ref='form' onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Title" ref='title' />
         <input type="text" placeholder="Body" ref='body' />
         <input type="text" placeholder="Username" ref='username' />
