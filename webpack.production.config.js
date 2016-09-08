@@ -6,12 +6,17 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'URL_ENV': '"http://54.213.196.176/api/posts"'
+      }
+    })
   ],
   module: {
     loaders: [

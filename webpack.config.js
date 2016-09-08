@@ -13,7 +13,12 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'URL_ENV': '"http://localhost:3000/api/posts"'
+      }
+    })
   ],
   module: {
     preLoaders: [
