@@ -17,13 +17,13 @@ class App extends React.Component {
   }
 
   loadPosts () {
-    fetch(this.props.url)
+    fetch(process.env.URL_ENV)
       .then(response => response.json())
       .then(data => this.setState({ posts: data }))
   }
 
   handlePostSubmit (post) {
-    fetch(this.props.url, {
+    fetch(process.env.URL_ENV, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
