@@ -3,36 +3,23 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client',
     './src/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'URL_ENV': '"http://localhost:3000/api/posts"'
+        'URL_ENV': '"http://54.213.196.176/api/posts"'
       }
     })
   ],
   module: {
-    preLoaders: [
-      { test: /\.jsx?$/,
-        loader: 'eslint',
-        exclude: /node_modules/ }
-    ],
-
     loaders: [
-      {
-        loader: 'react-hot',
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname, "src")
-      },
       {
         loader: 'babel-loader',
         test: /\.jsx?$/,
@@ -43,9 +30,5 @@ module.exports = {
         }
       }
     ]
-  },
-  eslint: {
-    failOnWarning: false,
-    failOnError: true
   }
 };
