@@ -1,8 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import App from './App'
+import configureStore from './store/configureStore'
+
+const store = configureStore()
  
 render(
-  <App pollInterval={2000} />,
+  <Provider store={store}>
+    <App pollInterval={2000} />
+  </Provider>,
   document.getElementById('root')
 );
