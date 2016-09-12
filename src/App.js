@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <Post posts={ this.props.posts.posts } />
+        <Post posts={ this.props.posts.posts } onRemovePost={this.props.fetchRemovePost} />
         <PostForm onPostSubmit={this.props.fetchAddPost} />
       </div>
     )

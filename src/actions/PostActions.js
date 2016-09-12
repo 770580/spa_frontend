@@ -1,5 +1,6 @@
 export const GET_POSTS = 'GET_POSTS'
 export const ADD_POST = 'ADD_POST'
+export const REMOVE_POST = 'REMOVE_POST'
 
 export function getPosts(posts) {
   return {
@@ -12,6 +13,12 @@ export function addPost(post) {
   return {
     type: ADD_POST,
     payload: post
+  }
+}
+
+export function removePost() {
+  return {
+    type: REMOVE_POST
   }
 }
 
@@ -35,5 +42,15 @@ export function fetchAddPost(post) {
     })
     .then(response => response.json())
     .then(data => dispatch(addPost(data)))
+  }
+}
+
+export function fetchRemovePost(id) {
+  const url = process.env.URL_ENV + '/' + id
+  return dispatch => {
+    fetch(url, {
+      method: 'DELETE'
+    })
+    .then(dispatch(removePost()))
   }
 }
