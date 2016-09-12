@@ -9,13 +9,14 @@ import * as PostActions from './actions/PostActions'
 class App extends React.Component {
   componentDidMount () {
      this.props.fetchPosts()
+     setInterval(() => this.props.fetchPosts(), this.props.pollInterval)
   }
 
   render() {
     return(
       <div>
         <Post posts={ this.props.posts.posts } />
-        <PostForm onPostSubmit={this.props.addPost} />
+        <PostForm onPostSubmit={this.props.fetchAddPost} />
       </div>
     )
   }
