@@ -1,11 +1,15 @@
-import { ADD_POST } from '../actions/PostActions'
+import { GET_POSTS, ADD_POST } from '../actions/PostActions'
 
-export default function posts(state = { count: 0 }, action) {
-  const count = state.count
+export default function posts( state = { posts: [] }, action) {
   switch (action.type) {
-    case ADD_POST:
-      console.log('Hello redux!')
-      return { count: count + 1 }
+    case GET_POSTS: {
+      console.log ({posts})
+      return { ...state, posts: action.payload }
+    }
+    case ADD_POST: {
+      const newPosts = state.posts.concat(action.payload)
+      return { ...state, posts: newPosts }
+    }
   default:
     return state
   }
