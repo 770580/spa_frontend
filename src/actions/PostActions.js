@@ -16,9 +16,10 @@ export function addPost(post) {
   }
 }
 
-export function removePost() {
+export function removePost(id) {
   return {
-    type: REMOVE_POST
+    type: REMOVE_POST,
+    payload: id
   }
 }
 
@@ -51,6 +52,6 @@ export function fetchRemovePost(id) {
     fetch(url, {
       method: 'DELETE'
     })
-    .then(dispatch(removePost()))
+    .then(dispatch(removePost(id)))
   }
 }

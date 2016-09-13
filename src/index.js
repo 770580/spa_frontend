@@ -8,7 +8,7 @@ const store = configureStore()
  
 render(
   <Provider store={store}>
-    <App pollInterval={2000} />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

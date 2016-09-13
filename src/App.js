@@ -9,13 +9,12 @@ import * as PostActions from './actions/PostActions'
 class App extends React.Component {
   componentDidMount () {
      this.props.fetchPosts()
-     setInterval(() => this.props.fetchPosts(), this.props.pollInterval)
   }
 
   render() {
     return(
       <div>
-        <Post posts={ this.props.posts.posts } onRemovePost={this.props.fetchRemovePost} />
+        <Post posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} />
         <PostForm onPostSubmit={this.props.fetchAddPost} />
       </div>
     )
@@ -23,7 +22,7 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state
+  return { posts: state.posts.posts }
 }
 
 function mapDispatchToProps(dispatch) {
