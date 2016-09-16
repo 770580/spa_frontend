@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
+import {Link} from 'react-router'
  
-class Post extends React.Component {
+class PostList extends React.Component {
 
   constructor (props) {
     super(props)
@@ -17,8 +18,16 @@ class Post extends React.Component {
     const postItems = this.props.posts.map((postItem) => {
       return (
        <div key={postItem.id}>
-          <p><b>{postItem.title}</b></p>
-          <p>{postItem.body}</p>
+          <p>
+            <b>
+              <Link to={'/posts/' + postItem.id}>
+                {postItem.title}
+              </Link>
+            </b>
+          </p>
+          <p>
+            {postItem.body}
+          </p>
           <p>
             {postItem.username}
             <button data-id={postItem.id} onClick={this.handleRemovePost}>
@@ -36,8 +45,8 @@ class Post extends React.Component {
   }
 }
 
-Post.propTypes = {
+PostList.propTypes = {
   posts: PropTypes.array.isRequired
 }
  
-export default Post
+export default PostList

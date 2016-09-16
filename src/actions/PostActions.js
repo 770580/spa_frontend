@@ -23,9 +23,10 @@ export function removePost(id) {
   }
 }
 
-export function fetchPosts() {
+export function fetchPosts(id) {
+  const url = (id) ? process.env.URL_ENV + '/' + id : process.env.URL_ENV
   return dispatch => {
-    fetch(process.env.URL_ENV)
+    fetch(url)
       .then(response => response.json())
       .then(data => dispatch(getPosts(data)))
   }
