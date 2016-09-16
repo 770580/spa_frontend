@@ -1,6 +1,7 @@
 export const GET_POSTS = 'GET_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const REMOVE_POST = 'REMOVE_POST'
+export const SHOW_POST = 'SHOW_POST'
 
 export function getPosts(posts) {
   return {
@@ -23,10 +24,16 @@ export function removePost(id) {
   }
 }
 
-export function fetchPosts(id) {
-  const url = (id) ? process.env.URL_ENV + '/' + id : process.env.URL_ENV
+export function showPost(post) {
+  return {
+    type: SHOW_POST,
+    payload: post
+  }
+}
+
+export function fetchPosts() {
   return dispatch => {
-    fetch(url)
+    fetch(process.env.URL_ENV)
       .then(response => response.json())
       .then(data => dispatch(getPosts(data)))
   }
@@ -54,5 +61,14 @@ export function fetchRemovePost(id) {
       method: 'DELETE'
     })
     .then(dispatch(removePost(id)))
+  }
+}
+
+export function fetchShowPost(id) {
+  const url = process.env.URL_ENV + '/' + id
+  return dispatch => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => dispatch(showPost(data)))
   }
 }

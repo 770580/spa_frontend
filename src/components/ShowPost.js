@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import * as PostActions from '../actions/PostActions'
  
-class OnePost extends React.Component {
+class ShowPost extends React.Component {
   componentDidMount () {
     const id = this.props.params.id
-    this.props.fetchPosts(id)
+    this.props.fetchShowPost(id)
   }
   render() {
     const post = this.props.posts
@@ -25,11 +25,11 @@ class OnePost extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { posts: state.posts.posts }
+  return { posts: state.posts.post }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(PostActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OnePost)
+export default connect(mapStateToProps, mapDispatchToProps)(ShowPost)

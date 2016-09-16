@@ -2,11 +2,11 @@ import 'whatwg-fetch'
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import PostList from './PostList'
-import PostForm from './PostForm'
+import PostList from '../components/PostList'
+import PostForm from '../components/PostForm'
 import * as PostActions from '../actions/PostActions'
  
-class Post extends React.Component {
+class PostContainer extends React.Component {
   componentDidMount () {
      this.props.fetchPosts()
   }
@@ -29,4 +29,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(PostActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post)
+export default connect(mapStateToProps, mapDispatchToProps)(PostContainer)
