@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './containers/App'
 import PostContainer from './containers/PostContainer'
-import ShowPost from './components/ShowPost'
+import Post from './components/Post'
 import NotFound from './components/NotFound'
 
 export const routes = (
@@ -10,7 +10,7 @@ export const routes = (
     <Route path='/' component={App}>
       <IndexRoute component={PostContainer} />
       <Route path='/posts' component={PostContainer} />
-      <Route path='/posts/:id' component={ShowPost} />
+      <Route path='/posts/:id' component={Post} />
     </Route>
     <Route path='*' component={NotFound} />
   </div>

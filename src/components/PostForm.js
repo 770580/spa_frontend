@@ -14,23 +14,22 @@ class PostForm extends React.Component {
     const title = this.refs.title.value.trim()
     const body = this.refs.body.value.trim()
     const username = this.refs.username.value.trim()
-    const inputs = { title: title, body: body, username: username}
-    return inputs
+    return { title: title, body: body, username: username}
   }
 
   handleSubmit (e) {
     e.preventDefault()
-    const inputs = this.formInputs()
+    const { title, body, username } = this.formInputs()
 
-    this.props.onPostSubmit({ title: inputs.title, body: inputs.body, username: inputs.username })
+    this.props.onPostSubmit({ title, body, username })
     this.refs.form.reset()
     this.props.disableBtn()
     return
   }
 
   btnIsDisable () {
-    const inputs = this.formInputs()
-    if (!inputs.title || !inputs.body || !inputs.username) {
+    const { title, body, username } = this.formInputs()
+    if ( !title || !body || !username) {
       this.props.disableBtn()
     }
     else {

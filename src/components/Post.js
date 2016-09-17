@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import * as PostActions from '../actions/PostActions'
  
-class ShowPost extends React.Component {
+class Post extends React.Component {
   componentDidMount () {
     const id = this.props.params.id
     this.props.fetchShowPost(id)
@@ -32,4 +32,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(PostActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowPost)
+export default connect(mapStateToProps, mapDispatchToProps)(Post)
