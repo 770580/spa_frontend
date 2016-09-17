@@ -2,11 +2,11 @@ import 'whatwg-fetch'
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Post from './Post'
-import PostForm from './PostForm'
-import * as PostActions from './actions/PostActions'
+import PostList from '../components/PostList'
+import PostForm from '../components/PostForm'
+import * as PostActions from '../actions/PostActions'
  
-class App extends React.Component {
+class PostContainer extends React.Component {
   componentDidMount () {
      this.props.fetchPosts()
   }
@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <Post posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} />
+        <PostList posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} />
         <PostForm onPostSubmit={this.props.fetchAddPost} />
       </div>
     )
@@ -29,4 +29,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(PostActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(PostContainer)

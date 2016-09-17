@@ -1,6 +1,10 @@
-import { GET_POSTS, ADD_POST, REMOVE_POST } from '../actions/PostActions'
+import { GET_POSTS, ADD_POST, REMOVE_POST, SHOW_POST } from '../actions/PostActions'
 
-export default function posts( state = { posts: [] }, action) {
+const initialState = {
+  posts: [],
+  post: {}
+} 
+export default function posts( state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
       return { ...state, posts: action.payload }
@@ -13,6 +17,8 @@ export default function posts( state = { posts: [] }, action) {
       const newPosts = state.posts.filter(e => e.id != id)
       return { ...state, posts: newPosts }
     }
+    case SHOW_POST:
+      return { ...state, post: action.payload }
   default:
     return state
   }
