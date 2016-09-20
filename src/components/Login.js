@@ -1,4 +1,7 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as AuthActions from '../actions/AuthActions'
 
 class Login extends React.Component {
 
@@ -9,6 +12,11 @@ class Login extends React.Component {
 
   loginSubmit(e) {
     e.preventDefault()
+    const name = this.refs.name.value.trim()
+    const password = this.refs.password.value.trim()
+    const redirectTo = this.props.location.query.next || '/login'
+
+    this.props.loginUser(name, password, redirectTo)
     this.refs.form1.reset()
   }
 
@@ -31,4 +39,15 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+function mapStateToProps(state) {
+  return {
+    isAuthenticating: state.auth.isAuthenticating,
+    statusText: state.auth.statusText
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(AuthActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
