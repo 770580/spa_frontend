@@ -8,13 +8,18 @@ import * as PostActions from '../actions/PostActions'
  
 class PostContainer extends React.Component {
   componentDidMount () {
-     this.props.fetchPosts()
+     this.fetchPostsWithToken()
+  }
+
+  fetchPostsWithToken() {
+    const token = this.props.token
+    this.props.fetchPosts(token)
   }
 
   render() {
     return(
       <div>
-        <PostList posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} />
+        <PostList posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} token={this.props.token} />
         <PostForm onPostSubmit={this.props.fetchAddPost} />
       </div>
     )

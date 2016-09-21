@@ -11,7 +11,9 @@ class PostList extends React.Component {
   handleRemovePost(e) {
     e.preventDefault()
     const id = Number(e.target.dataset.id)
-    this.props.onRemovePost(id)
+    const { token } = this.props
+
+    this.props.onRemovePost(id, token)
   }
 
   render() {

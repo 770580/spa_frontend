@@ -1,4 +1,4 @@
-import { checkHttpStatus, parseJSON } from '../utils'
+//import { checkHttpStatus, parseJSON } from '../utils'
 import { push } from 'react-router-redux'
 //import jwtDecode from 'jwt-decode'
 
@@ -48,11 +48,25 @@ export function logout() {
   }
 }*/
 
-export function loginUser(name, password, redirect='/') {
+export function loginUser(cren) {
   return function(dispatch) {
     dispatch(loginUserRequest())
-    return fetch('http://localhost:3000/user_token'), {
+    return fetch('http://localhost:3000/user_token', {
       method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cren)
+    })
+    .then(response => response.json())
+    .then(data => {
+      dispatch(loginUserSuccess(data.jwt))
+      dispatch(push('/posts'))
+    }).catch(error => {
+      dispatch(loginUserFailure(error))
+    })
+/*      method: 'post',
       crendentials: 'include',
       headers: {
         'Accept': 'application/json',
@@ -77,6 +91,6 @@ export function loginUser(name, password, redirect='/') {
       .catch(error => {
         dispatch(loginUserFailure(error))
       })
-    }
+    }*/
   }
 }

@@ -20,8 +20,9 @@ class PostForm extends React.Component {
   handleSubmit (e) {
     e.preventDefault()
     const { title, body, username } = this.formInputs()
+    const { token } = this.props
 
-    this.props.onPostSubmit({ title, body, username })
+    this.props.onPostSubmit({ title, body, username }, token)
     this.refs.form.reset()
     this.props.disableBtn()
     return
@@ -66,7 +67,9 @@ class PostForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { disabled: state.postsForm.disabled }
+  return {
+    disabled: state.postsForm.disabled,
+    token: state.auth.token }
 }
 
 function mapDispatchToProps(dispatch) {

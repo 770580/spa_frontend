@@ -31,21 +31,26 @@ export function showPost(post) {
   }
 }
 
-export function fetchPosts() {
+export function fetchPosts(token) {
   return dispatch => {
-    fetch(process.env.URL_ENV)
-      .then(response => response.json())
-      .then(data => dispatch(getPosts(data)))
+    fetch(process.env.URL_ENV, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => dispatch(getPosts(data)))
   }
 }
 
-export function fetchAddPost(post) {
+export function fetchAddPost(post, token) {
   return dispatch => {
     fetch(process.env.URL_ENV, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(post)
     })
@@ -54,21 +59,28 @@ export function fetchAddPost(post) {
   }
 }
 
-export function fetchRemovePost(id) {
+export function fetchRemovePost(id, token) {
   const url = process.env.URL_ENV + '/' + id
   return dispatch => {
     fetch(url, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
     .then(dispatch(removePost(id)))
   }
 }
 
-export function fetchShowPost(id) {
+export function fetchShowPost(id, token) {
   const url = process.env.URL_ENV + '/' + id
   return dispatch => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => dispatch(showPost(data)))
+    fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => dispatch(showPost(data)))
   }
 }

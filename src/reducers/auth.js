@@ -18,12 +18,13 @@ export default function auth( state = initialState, action) {
         'statusText': null
       }
     case LOGIN_USER_SUCCESS:
+    console.log(action.payload.token)
       return {
         ...state,
         'isAuthenticating': false,
         'isAuthenticated': true,
         'token': action.payload.token,
-        'userName': jwtDecode(action.payload.token).userName,
+        'userName': jwtDecode(action.payload.token).name,
         'statusText': 'You have been successfully logged in.'
       }
     case LOGIN_USER_FAILURE:
