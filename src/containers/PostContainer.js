@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PostList from '../components/PostList'
 import PostForm from '../components/PostForm'
+import Logout from '../components/Logout'
 import * as PostActions from '../actions/PostActions'
  
 class PostContainer extends React.Component {
@@ -19,6 +20,7 @@ class PostContainer extends React.Component {
   render() {
     return(
       <div>
+        <Logout />
         <PostList posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} token={this.props.token} />
         <PostForm onPostSubmit={this.props.fetchAddPost} />
       </div>

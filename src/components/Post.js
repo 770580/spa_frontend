@@ -14,7 +14,7 @@ class Post extends React.Component {
     const post = this.props.posts
     return(
       <div>
-        <Link to='/posts'>На главную</Link>
+        <Link to='/posts'>К постам</Link>
         <div>
           <p><b>{post.title}</b></p>
           <p>{post.body}</p>

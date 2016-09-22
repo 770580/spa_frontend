@@ -1,6 +1,5 @@
 //import { checkHttpStatus, parseJSON } from '../utils'
 import { push } from 'react-router-redux'
-//import jwtDecode from 'jwt-decode'
 
 export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST'
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
@@ -41,12 +40,12 @@ export function logout() {
   }
 }
 
-/*export function logoutAndRedirect() {
-  return (dispatch, state) => {
+export function logoutAndRedirect() {
+  return dispatch => {
     dispatch(logout())
     dispatch(push('/login'))
   }
-}*/
+}
 
 export function loginUser(cren) {
   return function(dispatch) {
@@ -65,6 +64,7 @@ export function loginUser(cren) {
       dispatch(push('/posts'))
     }).catch(error => {
       dispatch(loginUserFailure(error))
+      dispatch(push('/login'))
     })
 /*      method: 'post',
       crendentials: 'include',

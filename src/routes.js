@@ -11,6 +11,7 @@ export const routes = (
   <div>
     <Route path='/' component={App}>
       <IndexRoute component={Login} />
+      <Route path='/login' component={Login} />
       <Route path='/posts' component={requireAuthentication(PostContainer)} />
       <Route path='/posts/:id' component={requireAuthentication(Post)} />
     </Route>
