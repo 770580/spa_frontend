@@ -14,8 +14,8 @@ class Login extends React.Component {
     e.preventDefault()
     const name = this.refs.name.value.trim()
     const password = this.refs.password.value.trim()
-    const cren = {auth:{name: name, password: password}}
-    this.props.loginUser(cren)
+    const creds = {auth:{name: name, password: password}}
+    this.props.loginUser(creds)
     this.refs.form1.reset()
   }
 

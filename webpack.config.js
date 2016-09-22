@@ -16,7 +16,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'URL_ENV': '"http://localhost:3000/api/posts"'
+        'URL_ENV': '"http://localhost:3000/api/posts"',
+        'AUTH_URL': '"http://localhost:3000/user_token"'
       }
     })
   ],

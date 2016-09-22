@@ -3,8 +3,7 @@ import {LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER}
 const initialState = {
     token: null,
     isAuthenticated: false,
-    isAuthenticating: false,
-    statusText: null
+    isAuthenticating: false
 }
 
 export default function auth( state = initialState, action) {
@@ -12,32 +11,27 @@ export default function auth( state = initialState, action) {
     case LOGIN_USER_REQUEST:
       return {
         ...state,
-        'isAuthenticating': true,
-        'statusText': null
+        'isAuthenticating': true
       }
     case LOGIN_USER_SUCCESS:
-    console.log(action.payload.token)
       return {
         ...state,
         'isAuthenticating': false,
         'isAuthenticated': true,
-        'token': action.payload.token,
-        'statusText': 'You have been successfully logged in.'
+        'token': action.payload.token
       }
     case LOGIN_USER_FAILURE:
       return {
         ...state,
         'isAuthenticating': false,
         'isAuthenticated': false,
-        'token': null,
-        'statusText': `Authentication Error: ${action.payload.status} ${action.payload.statusText}`
+        'token': null
       }
     case LOGOUT_USER:
       return {
         ...state,
         'isAuthenticated': false,
-        'token': null,
-        'statusText': 'You have been successfully logged out.'
+        'token': null
       }
   default:
     return state

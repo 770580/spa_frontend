@@ -14,7 +14,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'URL_ENV': '"http://54.213.196.176/api/posts"'
+        'URL_ENV': '"http://54.213.196.176/api/posts"',
+        'AUTH_URL': '"http://54.213.196.176/user_token"'
       }
     })
   ],

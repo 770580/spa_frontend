@@ -21,8 +21,14 @@ class PostContainer extends React.Component {
     return(
       <div>
         <Logout />
-        <PostList posts={ this.props.posts } onRemovePost={this.props.fetchRemovePost} token={this.props.token} />
-        <PostForm onPostSubmit={this.props.fetchAddPost} />
+        <PostList
+          posts={ this.props.posts }
+          onRemovePost={this.props.fetchRemovePost}
+          token={this.props.token}
+        />
+        <PostForm
+          onPostSubmit={this.props.fetchAddPost}
+        />
       </div>
     )
   }
